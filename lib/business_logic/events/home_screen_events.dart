@@ -4,7 +4,9 @@ import 'package:equatable/equatable.dart';
 
 abstract class HomeScreenEvent extends Equatable {
   String? movieName;
-  String? movieRating;
+  double? movieRating;
+
+  HomeScreenEvent({this.movieName, this.movieRating});
 
   @override
   List<Object?> get props => [movieName, movieRating];
@@ -14,8 +16,16 @@ class DataFetchEvent extends HomeScreenEvent {}
 
 class CalculateResultEvent extends HomeScreenEvent {}
 
-class InsertMovieEvent extends HomeScreenEvent {}
+class InsertMovieEvent extends HomeScreenEvent {
+  InsertMovieEvent(String movie, double rating)
+      : super(movieName: movie, movieRating: rating);
+}
 
-class UpdateMovieEvent extends HomeScreenEvent {}
+class UpdateOrInsertMovieEvent extends HomeScreenEvent {
+  UpdateOrInsertMovieEvent(String movie, double rating)
+      : super(movieName: movie, movieRating: rating);
+}
 
-class DeleteMovieEvent extends HomeScreenEvent {}
+class DeleteMovieEvent extends HomeScreenEvent {
+  DeleteMovieEvent(String movie) : super(movieName: movie);
+}

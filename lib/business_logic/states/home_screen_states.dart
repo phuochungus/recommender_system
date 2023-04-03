@@ -1,21 +1,20 @@
 import 'package:equatable/equatable.dart';
-import 'package:recommender_system/entities/movie.dart';
 
 class HomeScreenState extends Equatable {
   final List<String> movieNames;
-  final List<Movie> predictUserMovies;
+  final List<String> predictUserMovies;
 
   const HomeScreenState(
       {this.movieNames = const <String>[],
-      this.predictUserMovies = const <Movie>[]});
+      this.predictUserMovies = const <String>[]});
 
   HomeScreenState copyWith(
-      {List<String>? moviesList, List<Movie>? predictUserMoviesList}) {
+      {List<String>? moviesList, List<String>? predictUserMoviesList}) {
     return HomeScreenState(
         movieNames: moviesList ?? movieNames,
         predictUserMovies: predictUserMoviesList ?? predictUserMovies);
   }
 
   @override
-  List<Object?> get props => [movieNames];
+  List<Object?> get props => [movieNames, predictUserMovies];
 }
